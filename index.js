@@ -3,8 +3,13 @@ const express = require('express')
 const app = express()
 app.use(express.static("public"));
 
-const productosRouter = require("./routes/productos.router");
-app.use("/productos",productosRouter);
+app.use(express.json());
+// const productosRouter = require("./routes/productos.router");
+// app.use("/productos", productosRouter);
+
+app.use("/productos", require("./routes/productos.router"));
+
+
 app.get("/", (req,res)=>{
    res.send("<h1>Hola expresso!!!</h1>") 
 })
